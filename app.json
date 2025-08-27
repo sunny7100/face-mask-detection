@@ -1,0 +1,16 @@
+{
+  "name": "Face Mask Detection AI/ML",
+  "description": "AI-powered face mask detection using CNN and Haar Cascades",
+  "repository": "https://github.com/yourusername/face_mask_detection",
+  "logo": "https://node-js-sample.herokuapp.com/node.png",
+  "keywords": ["python", "opencv", "ai", "ml", "computer-vision", "flask"],
+  "image": "heroku/python",
+  "buildpacks": [
+    {
+      "url": "https://github.com/heroku/heroku-buildpack-apt"
+    },
+    {
+      "url": "heroku/python"
+    }
+  ]
+}

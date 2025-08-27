@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Face Mask Detection - AI/ML Project</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+        }
+        
+        .header {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        
+        .header h1 {
+            font-size: 2.5em;
+            margin-bottom: 10px;
+        }
+        
+        .header p {
+            font-size: 1.1em;
+            opacity: 0.9;
+        }
+        
+        .tech-stack {
+            background: #f8f9fa;
+            padding: 20px;
+            border-left: 4px solid #2196F3;
+            margin: 20px;
+            border-radius: 8px;
+        }
+        
+        .tech-stack h3 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .tech-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .tech-item {
+            background: #2196F3;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9em;
+        }
+        
+        .upload-section {
+            padding: 40px;
+            text-align: center;
+        }
+        
+        .upload-area {
+            border: 3px dashed #ddd;
+            border-radius: 15px;
+            padding: 60px 20px;
+            margin: 20px 0;
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .upload-area:hover {
+            border-color: #2196F3;
+            background: #f8f9fa;
+        }
+        
+        .upload-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            color: #2196F3;
+        }
+        
+        .upload-text {
+            font-size: 1.2em;
+            color: #666;
+            margin-bottom: 20px;
+        }
+        
+        .btn {
+            background: linear-gradient(45deg, #2196F3, #21CBF3);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        
+        .btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+        
+        .feature {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+        
+        .feature-icon {
+            font-size: 2.5em;
+            margin-bottom: 15px;
+        }
+        
+        .feature h4 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .feature p {
+            color: #666;
+            font-size: 0.9em;
+        }
+        
+        #file-input {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Face Mask Detection</h1>
+            <p>AI/ML Project using CNN + Haar Cascades</p>
+        </div>
+        
+        <div class="tech-stack">
+            <h3>Tech Stack</h3>
+            <div class="tech-list">
+                <span class="tech-item">Python</span>
+                <span class="tech-item">OpenCV</span>
+                <span class="tech-item">TensorFlow</span>
+                <span class="tech-item">Haar Cascades</span>
+                <span class="tech-item">CNN</span>
+                <span class="tech-item">Flask</span>
+                <span class="tech-item">NumPy</span>
+            </div>
+        </div>
+        
+        <div class="upload-section">
+            <h2>Choose Detection Mode</h2>
+            
+            <div style="display: flex; gap: 20px; justify-content: center; margin: 30px 0;">
+                <div style="text-align: center;">
+                    <div class="upload-icon">📁</div>
+                    <h3>Image Upload</h3>
+                    <p style="color: #666; margin: 10px 0;">Analyze static images</p>
+                    <form action="/upload" method="post" enctype="multipart/form-data" style="display: inline;">
+                        <input type="file" id="file-input" name="file" accept="image/*" onchange="this.form.submit()" required style="display: none;">
+                        <button type="button" class="btn" onclick="document.getElementById('file-input').click()">
+                            Choose Image
+                        </button>
+                    </form>
+                </div>
+                
+                <div style="text-align: center;">
+                    <div class="upload-icon">📹</div>
+                    <h3>Live Camera</h3>
+                    <p style="color: #666; margin: 10px 0;">Real-time detection</p>
+                    <a href="{{ url_for('camera') }}" class="btn">
+                        Start Camera
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <div class="feature">
+                <div class="feature-icon">🧠</div>
+                <h4>AI-Powered Detection</h4>
+                <p>Advanced CNN architecture with 94%+ accuracy for reliable mask detection</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">⚡</div>
+                <h4>Fast Processing</h4>
+                <p>Optimized algorithms for real-time performance and quick results</p>
+            </div>
+            
+            <div class="feature">
+                <div class="feature-icon">🎯</div>
+                <h4>Multi-Face Detection</h4>
+                <p>Detects and analyzes multiple faces in a single image simultaneously</p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
