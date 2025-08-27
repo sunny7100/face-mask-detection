@@ -143,12 +143,6 @@
             font-size: 0.9em;
         }
         
-        .bbox {
-            color: #999;
-            font-size: 0.8em;
-            margin-top: 10px;
-        }
-        
         .actions {
             text-align: center;
             padding: 30px;
@@ -175,17 +169,6 @@
         .btn-secondary {
             background: linear-gradient(45deg, #666, #888);
         }
-        
-        @media (max-width: 768px) {
-            .images-section {
-                grid-template-columns: 1fr;
-            }
-            
-            .stats {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
     </style>
 </head>
 <body>
@@ -203,10 +186,6 @@
             <div class="stat-item">
                 <div class="stat-number">94%</div>
                 <div class="stat-label">Model Accuracy</div>
-            </div>
-            <div class="stat-item">
-                <div class="stat-number">22</div>
-                <div class="stat-label">FPS Capability</div>
             </div>
         </div>
         
@@ -236,27 +215,14 @@
                     <div class="confidence">
                         Confidence: {{ "%.1f"|format(detection.confidence * 100) }}%
                     </div>
-                    <div class="bbox">
-                        Position: ({{ detection.bbox[0] }}, {{ detection.bbox[1] }}) 
-                        Size: {{ detection.bbox[2] }}×{{ detection.bbox[3] }}
-                    </div>
                 </div>
                 {% endfor %}
             </div>
-        </div>
-        {% else %}
-        <div class="results-section">
-            <h2 class="results-title">No Faces Detected</h2>
-            <p style="text-align: center; color: #666;">
-                The AI model could not detect any faces in the uploaded image. 
-                Please try with a clearer image containing visible faces.
-            </p>
         </div>
         {% endif %}
         
         <div class="actions">
             <a href="{{ url_for('index') }}" class="btn">Analyze Another Image</a>
-            <a href="{{ url_for('uploaded_file', filename=result_image) }}" class="btn btn-secondary" download>Download Result</a>
         </div>
     </div>
 </body>

@@ -118,31 +118,6 @@
         
         .green { background: #4CAF50; }
         .red { background: #f44336; }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .info-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 10px;
-            text-align: center;
-            border-left: 4px solid #2196F3;
-        }
-        
-        .info-card h4 {
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .info-card p {
-            color: #666;
-            font-size: 0.9em;
-        }
     </style>
 </head>
 <body>
@@ -175,39 +150,7 @@
                 <a href="{{ url_for('index') }}" class="btn btn-secondary">Back to Upload</a>
                 <button class="btn" onclick="location.reload()">Restart Camera</button>
             </div>
-            
-            <div class="info-grid">
-                <div class="info-card">
-                    <h4>🧠 AI Model</h4>
-                    <p>CNN + Haar Cascades for accurate face and mask detection</p>
-                </div>
-                
-                <div class="info-card">
-                    <h4>⚡ Real-time</h4>
-                    <p>Live processing at 15-20 FPS for smooth detection</p>
-                </div>
-                
-                <div class="info-card">
-                    <h4>🎯 Multi-face</h4>
-                    <p>Detects and analyzes multiple faces simultaneously</p>
-                </div>
-                
-                <div class="info-card">
-                    <h4>📊 High Accuracy</h4>
-                    <p>94%+ accuracy on diverse datasets and conditions</p>
-                </div>
-            </div>
         </div>
     </div>
-    
-    <script>
-        // Auto-refresh if video feed fails
-        const video = document.querySelector('.video-feed');
-        video.onerror = function() {
-            setTimeout(() => {
-                video.src = video.src;
-            }, 3000);
-        };
-    </script>
 </body>
 </html>

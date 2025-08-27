@@ -7,10 +7,8 @@ env/
 venv/
 .venv/
 pip-log.txt
-pip-delete-this-directory.txt
 .tox/
 .coverage
-.coverage.*
 .cache
 nosetests.xml
 coverage.xml
@@ -19,9 +17,9 @@ coverage.xml
 .git
 .mypy_cache
 .pytest_cache
-.hypothesis
 uploads/
 *.jpg
 *.png
 *.jpeg
 .DS_Store
+.env

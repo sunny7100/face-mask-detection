@@ -13,6 +13,10 @@
 ## 🚀 Quick Start
 
 ```bash
+# Clone repository
+git clone https://github.com/yourusername/face_mask_detection.git
+cd face_mask_detection
+
 # Install dependencies
 pip install -r requirements.txt
 
@@ -20,22 +24,6 @@ pip install -r requirements.txt
 python web_app.py
 
 # Access at: http://localhost:8080
-```
-
-## 📁 Project Structure
-
-```
-face_mask_detection/
-├── web_app.py              # Main Flask application
-├── mask_detection_app.py   # CLI version
-├── train_cnn_model.py      # CNN training script
-├── templates/              # HTML templates
-│   ├── index.html         # Main page
-│   ├── camera.html        # Live camera
-│   └── results.html       # Detection results
-├── uploads/               # Image storage
-├── requirements.txt       # Dependencies
-└── README.md             # This file
 ```
 
 ## 🎯 Features
@@ -54,24 +42,16 @@ face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 faces = face_cascade.detectMultiScale(gray, 1.1, 5)
 ```
 
-### CNN Architecture (Conceptual)
-```
-Input (128x128x3) → Conv2D → BatchNorm → MaxPool → 
-Conv2D → BatchNorm → MaxPool → Dense → Softmax (2 classes)
-```
+### Detection Algorithm
+- Edge detection for facial features
+- Texture analysis for mask presence
+- Brightness-based classification
+- Real-time processing optimization
 
 ## 📊 Performance
 
 - **Accuracy**: 85-92% (rule-based implementation)
 - **Speed**: Real-time processing
 - **Multi-face**: Simultaneous detection
-
-## 🎓 Interview Talking Points
-
-1. **Computer Vision Pipeline** - Face detection + Classification
-2. **Haar Cascades** - Fast feature-based detection
-3. **CNN Architecture** - Deep learning for classification
-4. **Real-time Processing** - Optimized for live video
-5. **Web Deployment** - Full-stack implementation
 
 Perfect for demonstrating AI/ML expertise in technical interviews!
